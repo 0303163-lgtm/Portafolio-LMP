@@ -197,8 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     7. CV Modal Handler
+     7. CV Modal Handler & Version Switcher
      ========================================================================== */
+  const switchCvWebBtn = document.getElementById('switchCvWebBtn');
+  const switchCvOriginalBtn = document.getElementById('switchCvOriginalBtn');
+  const cvModalIframe = document.getElementById('cvModalIframe');
+  const downloadModalCvBtn = document.getElementById('downloadModalCvBtn');
+  const modalCvTitle = document.getElementById('modalCvTitle');
+
   function openCvModal(e) {
     if (e) e.preventDefault();
     if (cvModalOverlay) {
@@ -214,6 +220,30 @@ document.addEventListener('DOMContentLoaded', () => {
       cvModalOverlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
+  }
+
+  if (switchCvWebBtn && switchCvOriginalBtn && cvModalIframe) {
+    switchCvWebBtn.addEventListener('click', () => {
+      switchCvWebBtn.className = 'btn btn-sm btn-primary';
+      switchCvOriginalBtn.className = 'btn btn-sm btn-ghost';
+      cvModalIframe.src = 'assets/docs/CV_Lorena_Mendoza_Perez_Web.pdf#toolbar=1';
+      if (downloadModalCvBtn) {
+        downloadModalCvBtn.href = 'assets/docs/CV_Lorena_Mendoza_Perez_Web.pdf';
+        downloadModalCvBtn.download = 'CV_Lorena_Guadalupe_Mendoza_Perez_Web.pdf';
+      }
+      if (modalCvTitle) modalCvTitle.textContent = 'Currículum Vitae — Versión Web Oficial';
+    });
+
+    switchCvOriginalBtn.addEventListener('click', () => {
+      switchCvOriginalBtn.className = 'btn btn-sm btn-primary';
+      switchCvWebBtn.className = 'btn btn-sm btn-ghost';
+      cvModalIframe.src = 'assets/docs/CV_Lorena_Mendoza_Perez.pdf#toolbar=1';
+      if (downloadModalCvBtn) {
+        downloadModalCvBtn.href = 'assets/docs/CV_Lorena_Mendoza_Perez.pdf';
+        downloadModalCvBtn.download = 'CV_Lorena_Guadalupe_Mendoza_Perez_Original.pdf';
+      }
+      if (modalCvTitle) modalCvTitle.textContent = 'Currículum Vitae — Formato Tradicional FGR';
+    });
   }
 
   if (openCvModalBtn) openCvModalBtn.addEventListener('click', openCvModal);

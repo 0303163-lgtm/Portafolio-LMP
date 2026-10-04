@@ -113,11 +113,11 @@
               <span>Iniciar Contacto</span>
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
-            <a href="assets/docs/CV_Lorena_Mendoza_Perez.pdf" download="CV_Lorena_Guadalupe_Mendoza_Perez.pdf" class="btn btn-secondary">
+            <a href="assets/docs/CV_Lorena_Mendoza_Perez_Web.pdf" download="CV_Lorena_Guadalupe_Mendoza_Perez_Web.pdf" class="btn btn-secondary" title="Descargar CV con diseño y formato del sitio web">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              <span>Descargar CV (PDF)</span>
+              <span>Descargar CV (Versión Web)</span>
             </a>
-            <button id="quickViewCvHero" class="btn btn-ghost" title="Vista rápida del CV">
+            <button id="quickViewCvHero" class="btn btn-ghost" title="Vista previa del CV en pantalla">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
               <span>Vista Rápida</span>
             </button>
@@ -1110,16 +1110,22 @@
               </div>
             </div>
 
-            <!-- Botón Descargar CV -->
+            <!-- Botones Descargar CV -->
             <div class="cv-download-box">
               <div class="cv-download-info">
-                <h4>Currículum Vitae Completo</h4>
-                <p>Formato PDF oficial actualizado con detalle curricular completo.</p>
+                <h4>Currículum Vitae</h4>
+                <p>Descarga el CV oficial con el diseño ejecutivo del sitio web o en formato tradicional.</p>
               </div>
-              <a href="assets/docs/CV_Lorena_Mendoza_Perez.pdf" download="CV_Lorena_Guadalupe_Mendoza_Perez.pdf" class="btn btn-primary btn-block">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                <span>Descargar CV Oficial</span>
-              </a>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <a href="assets/docs/CV_Lorena_Mendoza_Perez_Web.pdf" download="CV_Lorena_Guadalupe_Mendoza_Perez_Web.pdf" class="btn btn-primary btn-block">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Descargar CV (Versión Web · PDF)</span>
+                </a>
+                <a href="assets/docs/CV_Lorena_Mendoza_Perez.pdf" download="CV_Lorena_Guadalupe_Mendoza_Perez_Original.pdf" class="btn btn-secondary btn-block btn-sm" style="font-size: 0.85rem;">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                  <span>Descargar Versión Tradicional FGR</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -1211,12 +1217,26 @@
       <div class="modal-header">
         <div class="modal-title-group">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-          <h3>Currículum Vitae Oficial — Lorena Guadalupe Mendoza Pérez</h3>
+          <div>
+            <h3 id="modalCvTitle">Currículum Vitae — Versión Web Oficial</h3>
+            <span style="font-size: 0.75rem; color: var(--accent-gold);">Lorena Guadalupe Mendoza Pérez</span>
+          </div>
         </div>
+
+        <!-- Version Switch Tabs -->
+        <div class="modal-version-switch" style="display: flex; gap: 0.4rem; background: var(--bg-tertiary); padding: 3px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+          <button id="switchCvWebBtn" class="btn btn-sm btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">
+            Versión Web
+          </button>
+          <button id="switchCvOriginalBtn" class="btn btn-sm btn-ghost" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">
+            Tradicional FGR
+          </button>
+        </div>
+
         <div class="modal-actions">
-          <a href="assets/docs/CV_Lorena_Mendoza_Perez.pdf" download="CV_Lorena_Guadalupe_Mendoza_Perez.pdf" class="btn btn-outline btn-sm">
+          <a id="downloadModalCvBtn" href="assets/docs/CV_Lorena_Mendoza_Perez_Web.pdf" download="CV_Lorena_Guadalupe_Mendoza_Perez_Web.pdf" class="btn btn-outline btn-sm">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span>Descargar</span>
+            <span id="downloadModalCvText">Descargar PDF</span>
           </a>
           <button class="modal-close-btn" id="closeCvModalBtn" aria-label="Cerrar modal">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -1224,7 +1244,7 @@
         </div>
       </div>
       <div class="modal-body">
-        <iframe src="assets/docs/CV_Lorena_Mendoza_Perez.pdf#toolbar=1" class="cv-iframe" title="Visor de Curriculum Vitae"></iframe>
+        <iframe id="cvModalIframe" src="assets/docs/CV_Lorena_Mendoza_Perez_Web.pdf#toolbar=1" class="cv-iframe" title="Visor de Curriculum Vitae"></iframe>
       </div>
     </div>
   </div>
